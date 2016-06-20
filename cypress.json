@@ -1,0 +1,9 @@
+{
+  "projectId": "8ef8816e-55e7-447d-aaa4-650be1f796df",
+  "env": {
+    "local": {
+      "office": "office.syp.local",
+      "portal": "portal.syp.local"
+    }
+  }
+}
