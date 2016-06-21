@@ -3,7 +3,8 @@
   "env": {
     "local": {
       "office": "office.syp.local",
-      "portal": "portal.syp.local"
+      "portal": "portal.syp.local",
+      "platform": "http://api.dev.syp.bakuhatsu.codes"
     }
   }
 }

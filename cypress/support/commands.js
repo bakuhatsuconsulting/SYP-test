@@ -52,9 +52,32 @@ Cypress.addParentCommand("login", function(app, email, password) {
 
   email = email || 'ken@bakuhatsu.codes';
   password = password || '1234';
-  
-  cy.visit(Cypress.env(env)[app]+'#/login')
+  Cypress.config('baseUrl', Cypress.env(env)[app]);
+  console.log(Cypress.config('baseUrl'));
+  cy.wait(1000)
+    .visit(Cypress.env(env)[app]+'/#/login')
     .get('input[name="email"]').type(email)
-    .get('input[name="password"]').type(password)
-    .get('button.btn-primary').click();
+    .get('input[name="password"]').type(password);
+
+  Cypress.config('baseUrl', null);
+
+  cy.get('button.btn-primary').click();
 });
+
+
+Cypress.addParentCommand('verify', function(app) {
+  Cypress.config('baseUrl', Cypress.env('local').platform);
+
+  console.log(Cypress.config());
+
+  cy.window()
+      .then(function(win) {
+        cy
+          .request({method: "GET", url: 'http://api.dev.syp.bakuhatsu.codes/sessions', headers: {'Authorization': 'Bearer '+ win.localStorage.getItem('syp.'+app+'.token')}})
+          .then(function(data) {
+            expect(data.status).to.equal(200);
+          });
+      });
+})
+
+
