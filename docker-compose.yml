@@ -1,4 +1,5 @@
 version: '2'
+services:
   portal:
     image: bitnami/node:6.0.0
     command: "sh -c 'npm install -g cypress && cypress install && pwd'"
