@@ -1,0 +1,10 @@
+version: '2'
+  portal:
+    image: bitnami/node:6.0.0
+    command: "sh -c 'npm install -g cypress && cypress install && pwd'"
+    expose:
+      - "3000"
+    ports:
+      - "2020:2020"
+    volumes:
+      - /home/projects/test:/app
