@@ -2,7 +2,7 @@ version: '2'
 services:
   portal:
     image: bitnami/node:6.0.0
-    command: "sh -c 'npm install -g cypress && cypress install && pwd'"
+    command: "sh -c 'npm install -g cypress-cli && sudo cypress install && sudo apt-get install -y xvfb xserver-xorg-core x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic x11-apps'"
     expose:
       - "3000"
     ports:
